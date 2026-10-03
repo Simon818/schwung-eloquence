@@ -10,13 +10,15 @@ This project is a stopgap solution until Schwung supports external TTS. The inst
 
 ## Install
 
+First, make sure you're running Schwung 1.5 or later. 1.5 was released on September 27th, only a few days before Schwung-Eloquence, and earlier Schwung releases had a bug that caused Move to crash when trying to change Flite's speed or pitch.
+
 You need SSH access to your Move if you don't have it already. Schwung's installer should have set this up. From a terminal, `ssh ableton@move.local`, then run:
 
 ```
 wget -qO- https://simonj.me/schwung-eloquence/install.sh | sh
 ```
 
-Move restarts by itself when the install is finished. To restart it later yourself instead, end the command with `| sh -s -- --no-restart`.
+Move restarts by itself when the install is finished. To restart it manually instead, end the command with `| sh -s -- --no-restart`.
 
 After the restart, go to Global Settings (shift+hold step 2), choose **Screen Reader**, and set Engine to **Flite**. Your Flite should sound suspiciously Eloquence-like.
 

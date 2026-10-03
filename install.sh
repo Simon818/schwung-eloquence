@@ -40,7 +40,12 @@ set_default() {
 }
 
 install() {
-    [ -x "$SCHWUNG/schwung-entry.sh" ] || fail "Schwung is not installed. Install Schwung 1.3 or later first."
+    [ -x "$SCHWUNG/schwung-entry.sh" ] || fail "Schwung is not installed. Install Schwung 1.5 or later first."
+    # Before 1.5, Schwung calls this missing function, and so crashes Move,
+    # whenever the Flite voice's speed or pitch is changed.
+    if grep -q tts_save_config "$SCHWUNG/schwung-shim.so" 2>/dev/null; then
+        fail "this version of Schwung crashes Move when the Flite voice's speed or pitch is changed. Update Schwung to 1.5 or later first."
+    fi
     rm -rf "$WORK"
     mkdir -p "$WORK" || fail "could not create $WORK"
 
